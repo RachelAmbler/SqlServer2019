@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    sqlserver2019:
+        image: sqlserver_2019_full
+        environment:
+          - ACCEPT_EULA=Y
+          - MSSQL_DATA_DIR=/var/opt/SqlServer/UserDataAndLogs
+          - MSSQL_LOG_DIR=/var/opt/SqlServer/UserDataAndLogs
+          - MSSQL_BACKUP_DIR=/var/opt/SqlServer/Backups
+          - MSSQL_AGENT_ENABLED=true
+          - MSSQL_SA_PASSWORD=%MSSQL_SA_PASSWORD
+          - TZ=%TIME_ZONE
+        ports:
+          - "%PORT:1433"
+        volumes:
+          - %INSTANCEHOME/Files:/var/opt/SqlServer/Files:rw
+          - %INSTANCEHOME/Backups:/var/opt/SqlServer/Backups:rw
+          - SqlServer2019-mssql:/var/opt/mssql
+          - SqlServer2019-UserDataAndLogs:/var/opt/UserDataAndLogs
+volumes:
+  SqlServer2019-mssql:
+  SqlServer2019-UserDataAndLogs:
