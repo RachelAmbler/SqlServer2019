@@ -6,7 +6,7 @@ RUN useradd -u 10001 mssql && \
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)" && \
     apt-get update && \
-    apt-get install -y wget software-properties-common apt-transport-https && \
+    apt-get install -y curl wget software-properties-common apt-transport-https && \
     curl "https://github.com/RachelAmbler/SqlServer2019/blob/main/DockerFiles/mssql-zulu-jre-11_11.43.56-1_amd64.deb" > /var/opt/SqlServer/m.deb && \
     ls -ila /var/opt/SqlServer && \
     dpkg -i /var/opt/SqlServer/m.deb && apt install -f && \
