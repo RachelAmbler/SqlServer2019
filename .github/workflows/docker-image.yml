@@ -32,4 +32,4 @@ jobs:
           push: true
           context: ./DockerFiles
           platforms: linux/amd64
-          tags: rachelambler/sqlserver2019:latest
+          tags: rachelhambler/sqlserver2019:latest
