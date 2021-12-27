@@ -1,3 +1,5 @@
+[![ci](https://github.com/RachelAmbler/SqlServer2019/actions/workflows/docker-image.yml/badge.svg)](https://github.com/RachelAmbler/SqlServer2019/actions/workflows/docker-image.yml)
+
 # SqlServer2019 Development Docker Containers
 
 ## Forward
