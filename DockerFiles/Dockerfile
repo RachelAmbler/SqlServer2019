@@ -2,7 +2,9 @@ FROM ubuntu:20.04
 
 RUN mkdir /var/opt/zuluTmp
 
-COPY mssql-zulu-jre-11_11.43.56-1_amd64.deb /var/opt/zuluTmp
+COPY mssql-zulu-jre-11_11.43.56-1_amd64.deb /var/opt/zuluTmp/mssql-zulu.deb
+
+RUN ls -ila /var/opt/zuluTmp
 
 RUN useradd -u 10001 mssql && \
     mkdir --parents /var/opt/SqlServer/UserDataAndLogs /var/opt/SqlServer/Backups /var/opt/SqlServer/Files /var/opt/mssql && \
@@ -11,7 +13,8 @@ RUN useradd -u 10001 mssql && \
     add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)" && \
     apt-get update && \
     apt-get install -y wget software-properties-common apt-transport-https && \
-    dpkg -i /var/opt/zuluTmp/mssql-zulu-jre-11_11.43.56-1_amd64.deb && apt install -f && \
+    ls -ila /var/opt/zuluTmp && \
+    dpkg -i /var/opt/zuluTmp/mssql-zulu.deb && apt install -f && \
     apt-get install -y mssql-server mssql-server-fts \
                        mssql-server-polybase mssql-server-polybase-hadoop && \
     chown -R mssql:mssql /var/opt/SqlServer && chown -R mssql:mssql /var/opt/mssql && \
