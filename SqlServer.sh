@@ -81,7 +81,6 @@ for arg do
   shift
 done
 
-#export MSSQL_SA_PASSWORD=$(cat /dev/urandom | tr -dc '[:alnum:]' | fold -w ${1:-32} | head -n 1)
 export MSSQL_SA_PASSWORD=$(openssl rand -base64 33)
 
 if [[ $ACTION == "I" ]]; then
