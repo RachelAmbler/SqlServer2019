@@ -7,16 +7,16 @@ RUN useradd -u 10001 mssql && \
     add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)" && \
     apt-get update && \
     apt-get install -y curl wget software-properties-common apt-transport-https && \
-    curl "https://github.com/RachelAmbler/SqlServer2019/blob/main/DockerFiles/mssql-zulu-jre-11_11.43.56-1_amd64.deb" > /var/opt/SqlServer/m.deb && \
+    wget -O /var/opt/SqlServer/zulu.deb "https://github.com/RachelAmbler/SqlServer2019/blob/main/DockerFiles/mssql-zulu-jre-11_11.43.56-1_amd64.deb?raw=true" && \
     ls -ila /var/opt/SqlServer && \
-    sha1sum /var/opt/SqlServer/m.deb && \
-    dpkg -i /var/opt/SqlServer/m.deb && apt install -f && \
+    sha1sum /var/opt/SqlServer/zulu.deb && \
+    dpkg -i /var/opt/SqlServer/zulu.deb && apt install -f && \
     apt-get install -y mssql-server mssql-server-fts \
                        mssql-server-polybase mssql-server-polybase-hadoop && \
     chown -R mssql:mssql /var/opt/SqlServer && chown -R mssql:mssql /var/opt/mssql && \
     chmod -R 770 /var/opt/SqlServer && chmod -R 770 /var/opt/mssql && \
     chmod -R 777 /var/opt/SqlServer/Backups /var/opt/SqlServer/Files && \
-    rm /var/opt/SqlServer/m.deb && \
+    rm /var/opt/SqlServer/zulu.deb && \
     apt-get clean && rm -rf /var/lib/apt/lists
 
 USER mssql
