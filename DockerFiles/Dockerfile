@@ -9,6 +9,7 @@ RUN useradd -u 10001 mssql && \
     apt-get install -y curl wget software-properties-common apt-transport-https && \
     curl "https://github.com/RachelAmbler/SqlServer2019/blob/main/DockerFiles/mssql-zulu-jre-11_11.43.56-1_amd64.deb" > /var/opt/SqlServer/m.deb && \
     ls -ila /var/opt/SqlServer && \
+    sha1sum /var/opt/SqlServer/m.deb && \
     dpkg -i /var/opt/SqlServer/m.deb && apt install -f && \
     apt-get install -y mssql-server mssql-server-fts \
                        mssql-server-polybase mssql-server-polybase-hadoop && \
