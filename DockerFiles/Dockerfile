@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN mkdir /var/opt/tmp
+RUN mkdir /var/opt/zuluTmp
 
 COPY mssql-zulu-jre-11_11.43.56-1_amd64.deb /var/opt/zuluTmp
 
