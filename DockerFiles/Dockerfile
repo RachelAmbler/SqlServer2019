@@ -8,10 +8,8 @@ RUN useradd -u 10001 mssql && \
     apt-get update && \
     apt-get install -y curl wget software-properties-common apt-transport-https && \
     wget -O /var/opt/SqlServer/zulu.deb "https://github.com/RachelAmbler/SqlServer2019/blob/main/DockerFiles/mssql-zulu-jre-11_11.43.56-1_amd64.deb?raw=true" && \
-    ls -ila /var/opt/SqlServer && \
-    sha1sum /var/opt/SqlServer/zulu.deb && \
-    dpkg -i /var/opt/SqlServer/zulu.deb && apt install -f && \
     apt-get install -y mssql-server mssql-server-fts \
+                       /var/opt/SqlServer/zulu.deb \
                        mssql-server-polybase mssql-server-polybase-hadoop && \
     chown -R mssql:mssql /var/opt/SqlServer && chown -R mssql:mssql /var/opt/mssql && \
     chmod -R 770 /var/opt/SqlServer && chmod -R 770 /var/opt/mssql && \
